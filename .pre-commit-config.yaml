@@ -1,0 +1,86 @@
+
+# To use:
+#
+#     pre-commit run -a
+#
+# Or:
+#
+#     pre-commit install  # (runs every time you commit in git)
+#
+# To update this file:
+#
+#     pre-commit autoupdate
+#
+# See https://github.com/pre-commit/pre-commit
+
+repos:
+  # Standard hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-added-large-files
+        exclude: ^src/sdk/
+      - id: check-case-conflict
+        exclude: ^src/sdk/
+      - id: check-docstring-first
+        exclude: ^src/sdk/
+      - id: check-symlinks
+        exclude: ^src/sdk/
+      - id: check-xml
+        exclude: ^src/sdk/
+      - id: check-yaml
+        args: ["--allow-multiple-documents"]
+        exclude: ^src/sdk/
+      - id: debug-statements
+        exclude: ^src/sdk/
+      - id: end-of-file-fixer
+        exclude: ^src/sdk/
+      - id: mixed-line-ending
+        exclude: ^src/sdk/
+      - id: trailing-whitespace
+        exclude_types: [rst]
+        exclude: ^src/sdk/
+
+  # Python hooks
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.3.0
+    hooks:
+    - id: flake8
+      args: ["--extend-ignore=E501"]
+
+  # CPP hooks
+  - repo: https://github.com/pre-commit/mirrors-clang-format
+    rev: v22.1.0
+    hooks:
+      - id: clang-format
+        args: ['-fallback-style=none', '-i']
+        exclude: ^src/sdk/
+
+  - repo: local
+    hooks:
+      - id: ament_cpplint
+        name: ament_cpplint
+        description: Static code analysis of C/C++ files.
+        entry: ament_cpplint
+        language: system
+        files: \.(h\+\+|h|hh|hxx|hpp|cuh|c|cc|cpp|cu|c\+\+|cxx|tpp|txx)$
+        args: ["--linelength=100", "--filter=-whitespace/newline"]
+        exclude: ^src/sdk/
+
+  # Cmake hooks
+  - repo: local
+    hooks:
+      - id: ament_lint_cmake
+        name: ament_lint_cmake
+        description: Check format of CMakeLists.txt files.
+        entry: ament_lint_cmake
+        language: system
+        files: CMakeLists\.txt$
+
+  # Package XML
+  - repo: https://github.com/Joschi3/package_xml_validation.git
+    rev: v1.4.2
+    hooks:
+      - id: format-package-xml
+        name: Validate and Format package.xml
+        exclude: ^src/sdk/
