@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.12)
 project(rplidar_sdk_ros2
         VERSION 2.1.0
         LANGUAGES CXX
