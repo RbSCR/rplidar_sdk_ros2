@@ -19,7 +19,7 @@ jobs:
   #    cause a lot of errors.
   ament_lint_cpp:
     name: ament_${{ matrix.linter }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
