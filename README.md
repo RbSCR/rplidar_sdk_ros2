@@ -32,13 +32,14 @@ That package includes the SDK sources and provides a ROS node; but it does not p
 It does provide some usefull udev-rules.
 
 ---
-
+![ROS 2](https://img.shields.io/badge/ROS%202-Jazzy%20(Ubuntu%2024.04)-blue?style=flat&logo=ros&logoSize=auto)
 ![C++17](https://img.shields.io/badge/C++-17-green)
 ![License](https://img.shields.io/badge/License-BSD--2--Clause-orange)
+[![ROS 2 Build](https://github.com/RbSCR/rplidar_sdk_ros2/actions/workflows/ros2-build.yml/badge.svg)](https://github.com/RbSCR/rplidar_sdk_ros2/actions/workflows/ros2-build.yml)
 
 Tested with:
 
-![ROS2 Jazzy](https://img.shields.io/badge/ROS2-Jazzy-blue)
 ![RPLIDAR C1](https://img.shields.io/badge/RPLIDAR--C1-green)
+![ROS2 Jazzy](https://img.shields.io/badge/ROS2-Jazzy-blue)
 
 ---
