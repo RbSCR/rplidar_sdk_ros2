@@ -11,9 +11,7 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(ament_cmake_ros REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
+find_package(ament_cmake_gen_version_h REQUIRED)
 
 # set SDK path
 set(RPLIDAR_SDK_PATH "${PROJECT_SOURCE_DIR}/src/sdk")
@@ -141,3 +139,9 @@ ament_export_targets(
 )
 
 ament_package()
+
+# Generating a version header checks if the first argument is a library or executable TARGET
+# within the CmakeList.txt
+# Because this package doesn't have a target named after the package-name a small trick
+# to curcumvent this check and still generate a package version header.
+ament_generate_version_header(rplidar_sdk HEADER_PATH "version.h")
